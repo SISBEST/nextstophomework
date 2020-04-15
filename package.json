@@ -1,0 +1,23 @@
+{
+  "name": "nextstophomework",
+  "version": "1.0.0",
+  "description": "Next stop: Homework! An easy-to-use, train themed homework tracker!",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SISBEST/nextstophomework.git"
+  },
+  "author": "Samuel Sharp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SISBEST/nextstophomework/issues"
+  },
+  "homepage": "https://github.com/SISBEST/nextstophomework#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^9.0.0-beta.13"
+  }
+}
