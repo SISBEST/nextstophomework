@@ -16,7 +16,11 @@
     "url": "https://github.com/SISBEST/nextstophomework/issues"
   },
   "homepage": "https://github.com/SISBEST/nextstophomework#readme",
-  "dependencies": {},
+  "dependencies": {
+    "configstore": "^5.0.1",
+    "electron-store": "^5.1.1",
+    "material-components-web": "^5.1.0"
+  },
   "devDependencies": {
     "electron": "^9.0.0-beta.13"
   }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Next Stop: Homework!</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyA38C-PcHT3HPViPBLCA-rmrk_GoHGIsV0",
+        authDomain: "nextstophomework.firebaseapp.com",
+        databaseURL: "https://nextstophomework.firebaseio.com",
+        projectId: "nextstophomework",
+        storageBucket: "nextstophomework.appspot.com",
+        messagingSenderId: "227114187577",
+        appId: "1:227114187577:web:a6f5c5d87713debe2386e8",
+        measurementId: "G-08X0Q52478"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css" />
+    <script type="text/javascript">
+      var uiConfig = {
+        signInSuccessUrl: 'index.html',
+        signInOptions: [
+          firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        tosUrl: function() {
+          window.alert('Please do not abuse our services.');
+        },
+        privacyPolicyUrl: function() {
+          window.alert('We only collect basic account data we need and we never store it on insecure servers. We are backed by Google\'s Firebase platform.');
+        }
+      };
+
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+  </head>
+  <body>
+    <h1>Next Stop: Homework!</h1>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
