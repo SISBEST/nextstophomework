@@ -49,10 +49,10 @@
       initApp();
     });
     function add(){
-      var dbref = db.collection('users').doc(this.uid);
+      var dbref = db.collection('schedules').doc(this.uid);
       var add = dbref.set({
-          activity: document.getElementById('activity'),
-          time: document.getElementById('time'),
+          activity: document.getElementById('activity').value,
+          time: document.getElementById('time').value,
       }, { merge: true });
     }
   </script>
