@@ -33,13 +33,11 @@ dialog+.backdrop {
 }
 
 /* for small devices, modal dialogs go full-screen */
-@media screen {
-  dialog[_polyfill_modal] {
-    /* TODO: implement */
-    top: 0;
-    width: auto;
-    margin: 1em;
-  }
+dialog[_polyfill_modal] {
+  /* TODO: implement */
+  top: 0;
+  width: auto;
+  margin: 1em;
 }
 
 ._dialog_overlay {
@@ -1346,23 +1344,19 @@ input.firebaseui-input, input.firebaseui-input-invalid {
   display: none
 }
 
-@media (max-width:268px) {
-  .firebaseui-idp-text.firebaseui-idp-text-long {
-    display: none
-  }
-
-  .firebaseui-idp-text.firebaseui-idp-text-short {
-    display: table-cell
-  }
+.firebaseui-idp-text.firebaseui-idp-text-long {
+  display: none
 }
 
-@media (max-width:320px) {
-  .firebaseui-recaptcha-container>div>div {
-    transform: scale(0.9);
-    -webkit-transform: scale(0.9);
-    transform-origin: 0 0;
-    -webkit-transform-origin: 0 0
-  }
+.firebaseui-idp-text.firebaseui-idp-text-short {
+  display: table-cell
+}
+
+.firebaseui-recaptcha-container>div>div {
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0
 }
 
 .firebaseui-idp-google>.firebaseui-idp-text {
@@ -1601,30 +1595,28 @@ input.firebaseui-input, input.firebaseui-input-invalid {
   float: left
 }
 
-@media (max-width:480px) {
-  .firebaseui-container {
-    box-shadow: none;
-    max-width: none;
-    width: 100%
-  }
+.firebaseui-container {
+  box-shadow: none;
+  max-width: none;
+  width: 100%
+}
 
-  .firebaseui-card-header {
-    border-bottom: 1px solid #e0e0e0;
-    margin-bottom: 16px;
-    padding: 16px 24px 0 24px
-  }
+.firebaseui-card-header {
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 16px;
+  padding: 16px 24px 0 24px
+}
 
-  .firebaseui-title {
-    padding-bottom: 16px
-  }
+.firebaseui-title {
+  padding-bottom: 16px
+}
 
-  .firebaseui-card-actions {
-    padding-right: 24px
-  }
+.firebaseui-card-actions {
+  padding-right: 24px
+}
 
-  .firebaseui-busy-indicator {
-    top: 0px
-  }
+.firebaseui-busy-indicator {
+  top: 0px
 }
 
 .mdl-textfield__label {

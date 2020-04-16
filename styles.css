@@ -1,10 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-body, form{
+body{
   background-color: blue;
   color: orange;
   text-align: center;
   font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
-.firebaseui-title{
-  color: white;
 }
