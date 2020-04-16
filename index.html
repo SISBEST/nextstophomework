@@ -23,10 +23,11 @@
     firebase.analytics();
     var db = firebase.firestore();
     var uid;
+    var displayName;
     initApp = function() {
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          var displayName = user.displayName;
+          displayName = user.displayName;
           var email = user.email;
           var emailVerified = user.emailVerified;
           var photoURL = user.photoURL;
@@ -34,7 +35,10 @@
           var phoneNumber = user.phoneNumber;
           var providerData = user.providerData;
           user.getIdToken().then(function(accessToken) {
-            //Handle Personalizing
+            Array.from(document.getElementsByClassName('name')).forEach((item, i) => {
+              item.innerHTML = this.displayName;
+            });
+
           });
         } else {
           //This should never happen, but if it does, take 'em back!
@@ -59,6 +63,8 @@
 
 <body>
   <h1>Next Stop: Homework!</h1>
+  <h2>Hello <span class="name"></span>!</h2>
+  <h2>Please fill out your schedule:</h2>
   <input type="text" id="activity" value="Activity Name">
   <input type="time" id="time" value="13:00">
   <button type="button" onclick="add();">Add</button>

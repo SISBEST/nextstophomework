@@ -1,7 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body{
-  background-color: blue;
-  color: orange;
+  background-color: #00a1de;
+  color: #f9461c;
   text-align: center;
   font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+input, button{
+  background-color: #009b3a;
+  color: #565a5c;
+  border-width: 0px;
+  padding: 5px;
+}
+input:focus, button:focus, button:hover{
+  color: black;
 }
