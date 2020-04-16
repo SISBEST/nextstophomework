@@ -35,15 +35,9 @@ app.on('activate', function() {
 const template = [{
   label: "Next Stop: Homework",
   submenu: [{
-      label: "Log out",
+      label: "Return to Login page",
       click: async () => {
         mainWindow.loadFile('login.html');
-      }
-    },
-    {
-      label: "Change Schedule",
-      click: async () => {
-        mainWindow.loadFile('index.html');
       }
     }
   ]
