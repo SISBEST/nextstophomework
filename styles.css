@@ -5,7 +5,7 @@ body{
   text-align: center;
   font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
-input, button{
+input, #addbtn, #gobtn{
   background-color: #009b3a;
   color: #565a5c;
   border-width: 0px;
@@ -13,4 +13,8 @@ input, button{
 }
 input:focus, button:focus, button:hover{
   color: black;
+}
+marquee{
+  font-size: 80px;
+  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
 }

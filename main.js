@@ -17,7 +17,7 @@ function createWindow() {
       nodeIntegration: true
     }
   });
-  mainWindow.loadFile('login.html');
+  mainWindow.loadFile('index.html');
   mainWindow.webContents.openDevTools()
 
   if (Notification.isSupported()) {

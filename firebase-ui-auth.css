@@ -49,7 +49,6 @@ dialog[_polyfill_modal] {
 }
 
 .mdl-button {
-  background: blue;
   border: none;
   border-radius: 2px;
   color: orange;

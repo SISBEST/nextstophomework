@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Next Stop: Homework!</title>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+  <script>
+    function notify(name){
+      const { Notification } = require('electron');
+      if (Notification.isSupported()) {
+        const notification = new Notification({
+          title: 'Now arriving: ' + name + " station.",
+          subtitle: 'Doors opening.',
+          body: 'Step back to allow customers to exit. When boarding, please move to the center of the car.',
+          hasReply: true
+        })
+
+        notification.on('show', () => console.log('Test Notification Shown'))
+        notification.on('click', () => console.log('Test Notification Clicked'))
+        notification.on('close', () => console.log('Test Notification Closed'))
+        notification.on('reply', (event, reply) => {
+          console.log(`Test Reply: ${reply}`)
+        })
+
+        notification.show()
+      } else {
+        window.alert('Notifications are not supported on this device.')
+      }
+    }
+    function getdata() {
+      var docRef = db.collection("schedules").doc(uid);
+      docRef.get().then(function(doc) {
+        if (doc.exists) {
+          var data = Object.entries(doc.data());
+          console.log("Schedule: ", data);
+          data.forEach((item, i) => {
+            var d = new Date();
+            var curhrs = d.getHours();
+            var curmns = d.getMinutes();
+            var evnhrs = parseInt(item[0].split(":")[0]);
+            var evnmns = parseInt(item[0].split(":")[1]);
+            var evnname = item[1];
+            console.log(evnname + " at " + evnhrs + ":" + evnmns + ". Now is " + curhrs + ":" + curmns + "!");
+            //If exact match, update text to Now Arriving and send notification
+            if(curhrs == evnhrs && curmns == evnmns){
+              notify(evnname);
+            }
+          });
+
+        } else {
+          console.log("Data not found...");
+          window.location.href = "index.html";
+        }
+      }).catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+    }
+    var firebaseConfig = {
+      apiKey: "AIzaSyA38C-PcHT3HPViPBLCA-rmrk_GoHGIsV0",
+      authDomain: "nextstophomework.firebaseapp.com",
+      databaseURL: "https://nextstophomework.firebaseio.com",
+      projectId: "nextstophomework",
+      storageBucket: "nextstophomework.appspot.com",
+      messagingSenderId: "227114187577",
+      appId: "1:227114187577:web:a6f5c5d87713debe2386e8",
+      measurementId: "G-08X0Q52478"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var db = firebase.firestore();
+    var uid;
+    var displayName;
+    initApp = function() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          uid = user.uid;
+          var phoneNumber = user.phoneNumber;
+          var providerData = user.providerData;
+          user.getIdToken().then(function(accessToken) {
+            Array.from(document.getElementsByClassName('name')).forEach((item, i) => {
+              item.innerHTML = this.displayName;
+            });
+            getdata();
+            setInterval(function() {
+              getdata()
+            }, 30000);
+          });
+        } else {
+          //This should never happen, but if it does, take 'em back!
+          window.location.assign("login.html");
+        }
+      }, function(error) {
+        console.log(error);
+      });
+    };
+
+    window.addEventListener('load', function() {
+      initApp();
+    });
+  </script>
+</head>
+
+<body>
+  <marquee scrollamount="40">Welcome aboard the Homework A Line (Blue)! This train's final destination is...</marquee>
+</body>
+
+</html>
