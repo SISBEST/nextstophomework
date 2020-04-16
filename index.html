@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Next Stop: Homework!</title>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyA38C-PcHT3HPViPBLCA-rmrk_GoHGIsV0",
+      authDomain: "nextstophomework.firebaseapp.com",
+      databaseURL: "https://nextstophomework.firebaseio.com",
+      projectId: "nextstophomework",
+      storageBucket: "nextstophomework.appspot.com",
+      messagingSenderId: "227114187577",
+      appId: "1:227114187577:web:a6f5c5d87713debe2386e8",
+      measurementId: "G-08X0Q52478"
+    };
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    var db = firebase.firestore();
+    var uid;
+    initApp = function() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          var displayName = user.displayName;
+          var email = user.email;
+          var emailVerified = user.emailVerified;
+          var photoURL = user.photoURL;
+          uid = user.uid;
+          var phoneNumber = user.phoneNumber;
+          var providerData = user.providerData;
+          user.getIdToken().then(function(accessToken) {
+            //Handle Personalizing
+          });
+        } else {
+          //This should never happen, but if it does, take 'em back!
+          window.location.assign("login.html");
+        }
+      }, function(error) {
+        console.log(error);
+      });
+    };
+
+    window.addEventListener('load', function() {
+      initApp();
+    });
+    function add(){
+      var dbref = db.collection('users').doc(this.uid);
+      var add = dbref.set({
+          activity: document.getElementById('activity'),
+          time: document.getElementById('time'),
+      }, { merge: true });
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Next Stop: Homework!</h1>
+  <input type="text" id="activity" value="Activity Name">
+  <input type="time" id="time" value="Time">
+  <button type="button" onclick="add();">Add</button>
+</body>
+
+</html>

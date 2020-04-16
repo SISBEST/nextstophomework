@@ -19,7 +19,8 @@
   "dependencies": {
     "configstore": "^5.0.1",
     "electron-store": "^5.1.1",
-    "material-components-web": "^5.1.0"
+    "material-components-web": "^5.1.0",
+    "rookout": "^0.1.88"
   },
   "devDependencies": {
     "electron": "^9.0.0-beta.13"

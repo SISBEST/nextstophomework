@@ -1,44 +1,53 @@
-// Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron');
+const {
+  app,
+  BrowserWindow,
+  Menu
+} = require('electron');
+var mainWindow;
+const rookout = require('rookout');
+rookout.start({
+  token: 'f42170bc7356fdde367e6c2fce185e2ec1b3ebfd942ecfe0ab8165e590d85c2f'
+})
 
-function createWindow () {
-  // Create the browser window.
-  const mainWindow = new BrowserWindow({
+function createWindow() {
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true
     }
   });
-
-  // and load the index.html of the app.
   mainWindow.loadFile('login.html');
 
-  // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  mainWindow.webContents.openDevTools()
 }
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-
-// Quit when all windows are closed.
-app.on('window-all-closed', function () {
-  // On OS X it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
+app.on('window-all-closed', function() {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
-
-app.on('activate', function () {
-  // On OS X it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
+app.on('activate', function() {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
 });
+const template = [{
+  label: "Next Stop: Homework",
+  submenu: [{
+      label: "Log out",
+      click: async () => {
+        mainWindow.loadFile('login.html');
+      }
+    },
+    {
+      label: "Change Schedule",
+      click: async () => {
+        mainWindow.loadFile('index.html');
+      }
+    }
+  ]
+}];
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+const menu = Menu.buildFromTemplate(template)
+Menu.setApplicationMenu(menu)
