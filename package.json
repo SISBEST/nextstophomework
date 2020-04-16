@@ -1,6 +1,9 @@
 {
-  "name": "nextstophomework",
+  "name": "@sisbest/nextstophomework",
   "version": "1.0.0",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "description": "Next stop: Homework! An easy-to-use, train themed homework tracker!",
   "main": "main.js",
   "scripts": {
@@ -20,7 +23,8 @@
     "configstore": "^5.0.1",
     "electron-store": "^5.1.1",
     "material-components-web": "^5.1.0",
-    "rookout": "^0.1.88"
+    "rookout": "^0.1.88",
+    "say": "^0.16.0"
   },
   "devDependencies": {
     "electron": "^9.0.0-beta.13"
