@@ -42,6 +42,8 @@
           if (doc.exists) {
             var data = Object.entries(doc.data());
             console.log("Schedule: ", data);
+            var d = new Date();
+            document.getElementById("time").innerHTML = d.getHours() + ":" + d.getMinutes();
             data.forEach((item, i) => {
                 var d = new Date();
                 var curhrs = d.getHours();
@@ -49,15 +51,12 @@
                 var evnhrs = parseInt(item[0].split(":")[0]);
                 var evnmns = parseInt(item[0].split(":")[1]);
                 var evnname = item[1];
-                console.log(evnname + " at " + evnhrs + ":" + evnmns + ". Now is " + curhrs + ":" + curmns + "!");
                 //If exact match, update text to Now Arriving and send notification
                 if (curhrs == evnhrs && curmns == evnmns) {
                   const dooropt = ["left", "right"]
                   const doors = dooropt[Math.round(Math.random())];
-                  document.querySelector("marquee").innerHTML = "Now arriving: " + evnname + " station. Doors open on the " + doors + " at " + evnname + ".";
-                  var synth = window.speechSynthesis;
-                  var utterThis = new SpeechSynthesisUtterance("Now arriving: " + evnname + " station. Doors open on the " + doors + " at " + evnname + ".");
-                  synth.speak(utterThis);
+                  document.querySelector("marquee").innerHTML = "This is: " + evnname + " station. Doors open on the " + doors + " at " + evnname + ".";
+                  window.alert("Now arriving: " + evnname + " station. Doors open on the " + doors + " at " + evnname + ".");
                   notify(evnname);
                 }
 
@@ -121,7 +120,9 @@
 </head>
 
 <body>
-  <marquee scrollamount="40">Welcome aboard the Homework A Line (Blue)! This train's final destination is...</marquee>
+  <marquee scrollamount="100">Welcome aboard the Homework A Line (Blue)! Thanks for going Homework. Please don't eat, drink, or smoke in trains or on platforms, and please avoid placing your feet on the seats. Thank you.</marquee>
+  <p id="time">--:--</p>
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/SirRu8mf3II?start=47&autoplay=1&loop=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 
 </html>

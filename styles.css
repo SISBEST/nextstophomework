@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@font-face {
+  font-family: "Railway";
+  src: url("font.otf");
+}
 body{
   background-color: #00a1de;
   color: #f9461c;
   text-align: center;
-  font-family: "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-family: "Railway", "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 input, #addbtn, #gobtn{
   background-color: #009b3a;
@@ -14,7 +18,7 @@ input, #addbtn, #gobtn{
 input:focus, button:focus, button:hover{
   color: black;
 }
-marquee{
-  font-size: 80px;
-  font-family: "Times New Roman", Times, Baskerville, Georgia, serif;
+marquee, #time{
+  font-size: 250px;
+  font-family: "Railway", "Roboto", Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
